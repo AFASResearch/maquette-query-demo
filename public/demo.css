@@ -1,0 +1,32 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  padding: 0 32px;
+}
+
+@media (max-width: 599px) {
+  .main {
+    padding: 0 16px;
+  }
+}
+
+/* Inspiration: https://material.io/components/web/catalog/lists/ */
+.bordered-list {
+    /* remove the side padding. we'll be placing it around the item instead. */
+    padding-right: 0;
+    padding-left: 0;
+}
+.bordered-list .mdc-list-item {
+    /* Add the list side padding padding to the list item. */
+    padding: 0 16px;
+    /* Add a border around each element. */
+    border: 1px solid rgba(0, 0, 0, .12);
+}
+
+/* Ensure adjacent borders don't collide with one another. */
+.bordered-list .mdc-list-item:not(:first-child) {
+    /*border-top: none;*/
+}
