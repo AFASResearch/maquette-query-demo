@@ -1,5 +1,6 @@
 import { createDemoPage } from './demo-page';
 import { createServicesBase, createRouter } from 'material-maquette';
+import { toolbar } from 'material-components-web';
 import {createHelloWorldPage} from "./hello-world-page";
 
 let services = createServicesBase(window);
@@ -17,6 +18,10 @@ let router = createRouter(services, {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  let toolbarComponent = toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
+  toolbarComponent.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
+
   let placholderElements = document.querySelectorAll('[id^="placeholder-"]') as Object as HTMLElement[];
   let placeholders: {[placeholderId: string]: HTMLElement} = {};
   for(let element of placholderElements) {

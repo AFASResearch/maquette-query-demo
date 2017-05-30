@@ -18,7 +18,7 @@ export let createDemoPage = (context: MaterialMaquetteServicesBase) => {
     items.push(createRandomItem());
   }
 
-  setTimeout(() => {
+  setInterval(() => {
     items.push(createRandomItem());
     context.projector.scheduleRender();
   }, 1000);
