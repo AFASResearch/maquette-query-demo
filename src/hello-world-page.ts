@@ -3,7 +3,7 @@ import {h} from "maquette";
 
 export let createHelloWorldPage = (dependencies: {}): Page => {
 
- let yourName = ''; // Piece of data
+  let yourName = ''; // State
 
   // Plain event handler
   let handleNameInput = (evt: Event) => {
@@ -14,10 +14,14 @@ export let createHelloWorldPage = (dependencies: {}): Page => {
   let renderMaquette = () => {
     return h('div', [
       h('input', {
-        type: 'text', placeholder: 'What is your name?',
-        value: yourName, oninput: handleNameInput
+        type: 'text',
+        placeholder: 'What is your name?',
+        value: yourName,
+        oninput: handleNameInput
       }),
-      h('p.output', ['Hello ' + (yourName || 'you') + '!'])
+      h('p.output', [
+        `Hello ${yourName || 'you'}!`
+      ])
     ]);
   };
 

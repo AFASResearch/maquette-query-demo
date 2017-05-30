@@ -8,10 +8,10 @@ export interface FilteredListConfig {
 
 export let createFilteredList = (context: MaterialMaquetteServicesBase, config: FilteredListConfig) => {
 
-  let filterText = '';
+  let filterText = ''; // 'private' state
 
   let filterTextfield = createTextfield(context, {
-    setValue: (text: string) => filterText = text.toLocaleLowerCase(),
+    setValue: (text: string) => filterText = text.toLowerCase(),
     getValue: () => filterText,
     label: () => 'Filter',
     id: 'filter'

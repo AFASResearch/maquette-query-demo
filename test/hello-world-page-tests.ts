@@ -20,8 +20,8 @@ describe('hello-world-page', () => {
   });
 
   it('greets the user by the name he has entered in one input event (using drag and drop for example)', () => {
-    input.simulate.input({ value: 'Johan' });
-    expect(output.textContent).to.equal('Hello Johan!');
+    input.simulate.input({ value: 'AmsterdamJS' });
+    expect(output.textContent).to.equal('Hello AmsterdamJS!');
   });
 
   it('outputs the value currently being typed', () => {

@@ -7,8 +7,8 @@ import { createServicesMock, ServicesMock } from './test-utilities';
 describe('filtered-list', () => {
 
   let projector = createTestProjector();
-  let filterInput = projector.query('input');
-  let listItems = projector.queryAll('li');
+  let filterInputQuery = projector.query('input');
+  let listItemsQuery = projector.queryAll('li');
   let servicesMock: ServicesMock;
   let items: ListItem[];
 
@@ -27,19 +27,19 @@ describe('filtered-list', () => {
   });
 
   it('Shows all items when no filter text is given', () => {
-    expect(listItems).to.have.length(4);
+    expect(listItemsQuery).to.have.length(4);
   });
 
   it('Lowercases the entered filter text', () => {
-    filterInput.simulate.input({ value: 'E' });
-    expect(filterInput.properties.value).to.equal('e');
+    filterInputQuery.simulate.input({ value: 'E' });
+    expect(filterInputQuery.properties.value).to.equal('e');
   });
 
   it('Only shows only items that match the filter text', () => {
-    filterInput.simulate.input({ value: 'q' });
-    expect(listItems).to.have.length(2);
-    expect(listItems.getResult(0).textContent).to.equal('JQuery');
-    expect(listItems.getResult(1).textContent).to.equal('Maquette');
+    filterInputQuery.simulate.input({ value: 'q' });
+    expect(listItemsQuery).to.have.length(2);
+    expect(listItemsQuery.getResult(0).textContent).to.equal('JQuery');
+    expect(listItemsQuery.getResult(1).textContent).to.equal('Maquette');
   });
 
 });
