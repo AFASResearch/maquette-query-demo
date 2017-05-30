@@ -1,18 +1,17 @@
-import {ApplicationContext} from "./interfaces";
-import {createTextfield} from "./components/textfield";
-import {createList, ListItem} from "./components/list";
+import {createTextfield, createList, ListItem, MaterialMaquetteServicesBase} from "material-maquette";
 import {h} from "maquette";
+import {createAppearAnimation} from "./animations/appear";
 
 export interface FilteredListConfig {
   getItems(): ListItem[];
 }
 
-export let createFilteredList = (context: ApplicationContext, config: FilteredListConfig) => {
+export let createFilteredList = (context: MaterialMaquetteServicesBase, config: FilteredListConfig) => {
 
   let filterText = '';
 
   let filterTextfield = createTextfield(context, {
-    setValue: (text) => filterText = text.toLocaleLowerCase(),
+    setValue: (text: string) => filterText = text.toLocaleLowerCase(),
     getValue: () => filterText,
     label: () => 'Filter',
     id: 'filter'
@@ -24,7 +23,8 @@ export let createFilteredList = (context: ApplicationContext, config: FilteredLi
 
   let list = createList(context, {
     getItems: () => config.getItems().filter(matchesFilterText),
-    extraClasses: ['bordered-list']
+    extraClasses: ['bordered-list'],
+    itemEnterAnimation: createAppearAnimation(context)
   });
 
   return {

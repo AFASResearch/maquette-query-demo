@@ -1,11 +1,26 @@
-import { createProjector } from 'maquette';
 import { createDemoPage } from './demo-page';
-import { createMDCService } from './mdc-service';
+import { createServicesBase, createRouter } from 'material-maquette';
+import {createHelloWorldPage} from "./hello-world-page";
 
-let projector = createProjector();
+let services = createServicesBase(window);
+let router = createRouter(services, {
+  projector: services.projector,
+  document: window.document,
+  match: (url: string) => {
+    switch (url) {
+      case '/hello':
+        return createHelloWorldPage(services);
+      case '/demo':
+        return  createDemoPage(services);
+    }
+  }
+});
 
-let mdcService = createMDCService();
-let context = {projector, mdcService, window};
-
-let demoPage = createDemoPage(context);
-projector.append(document.body, demoPage.renderMaquette);
+document.addEventListener('DOMContentLoaded', () => {
+  let placholderElements = document.querySelectorAll('[id^="placeholder-"]') as Object as HTMLElement[];
+  let placeholders: {[placeholderId: string]: HTMLElement} = {};
+  for(let element of placholderElements) {
+    placeholders[element.id.substr(12)] = element;
+  }
+  router.start(placeholders);
+});

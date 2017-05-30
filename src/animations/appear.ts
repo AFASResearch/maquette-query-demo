@@ -1,27 +1,25 @@
-import {ApplicationContext} from "../interfaces";
-
-import * as bezier from 'bezier-easing';
+import * as bezier from "bezier-easing";
 
 let standardCurve = bezier(0.4, 0.0, 0.2, 1);
 let decelerationCurve = bezier(0.0, 0.0, 0.2, 1);
 let accellerationCurve = bezier(0.4, 0.0, 1, 1);
 let sharpCurve = bezier(0.4, 0.0, 0.6, 1);
 
-export let createAppearAnimation = (context: ApplicationContext, duration = 300) => {
+export let createAppearAnimation = (dependencies: {window: Window}, duration = 300) => {
 
   return (element: HTMLElement) => {
     let autoHeight = element.offsetHeight;
-    let start = context.window.performance.now();
+    let start = window.performance.now();
 
     let step = () => {
-      let progress = (context.window.performance.now() - start) / duration;
+      let progress = (window.performance.now() - start) / duration;
       if (progress >= 1) {
         // done
         element.style.boxSizing = '';
         element.style.height = '';
         element.style.transform = '';
         element.style.opacity = '';
-        element.style['willChange'] = '';
+        (element as any).style['willChange'] = '';
         element.classList.remove('animating');
       } else {
         // progress
@@ -37,7 +35,7 @@ export let createAppearAnimation = (context: ApplicationContext, duration = 300)
     };
 
     // init
-    element.style['willChange'] = 'transform,opacity,height';
+    (element as any).style['willChange'] = 'transform,opacity,height';
     element.style.boxSizing = 'border-box';
     element.style.transformOrigin = '50% 50%';
     element.style.height = '0px';

@@ -1,11 +1,9 @@
 import {h} from "maquette";
-import {createToolbar} from "./components/toolbar";
-import {ApplicationContext} from "./interfaces";
+import {createToolbar, MaterialMaquetteServicesBase, ListItem, Page} from "material-maquette";
 import {createFilteredList} from "./filtered-list";
 import * as faker from "faker";
-import {ListItem} from "./components/list";
 
-export let createDemoPage = (context: ApplicationContext) => {
+export let createDemoPage = (context: MaterialMaquetteServicesBase) => {
 
   let lastKey = -1;
   let createRandomItem = (): ListItem => ({
@@ -15,7 +13,7 @@ export let createDemoPage = (context: ApplicationContext) => {
     //faker.system.commonFileName(faker.system.commonFileExt(), faker.system.commonFileType())
   });
 
-  let items = [];
+  let items: ListItem[] = [];
   for (let i = 0; i < 3; i++) {
     items.push(createRandomItem());
   }
@@ -25,26 +23,16 @@ export let createDemoPage = (context: ApplicationContext) => {
     context.projector.scheduleRender();
   }, 1000);
 
-  let toolbar = createToolbar(context, {
-    title: () => 'Demo'
-  });
-
   let filteredList = createFilteredList(context, {
     getItems: () => items
   });
 
-  let handleAfterCreate = () => setTimeout(context.mdcService.afterAppUpdate);
-  let page = {
-    renderMaquette: () => {
-      return h('div', {
-        afterCreate: handleAfterCreate,
-        afterUpdate: context.mdcService.afterAppUpdate
-      },  [
-        toolbar.renderMaquette(),
-        h('div.main', [
-          filteredList.renderMaquette()
-        ])
-      ]);
+  let page: Page = {
+    renderPlaceholders: {
+      title: () => h('div', ['List of attendees']),
+      content: () => h('div.main', [
+        filteredList.renderMaquette()
+      ])
     },
     exit: () => undefined
   };
