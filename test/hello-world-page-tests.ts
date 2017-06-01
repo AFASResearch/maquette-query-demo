@@ -6,8 +6,8 @@ import { expect } from 'chai';
 describe('hello-world-page', () => {
 
   let projector = createTestProjector();
-  let input = projector.query('input');
-  let output = projector.query('.output');
+  let inputQuery = projector.query('input');
+  let outputQuery = projector.query('.output');
   let page: Page | undefined;
 
   beforeEach(() => {
@@ -16,19 +16,19 @@ describe('hello-world-page', () => {
   });
 
   it('outputs "hello you!" when no name has been entered', () => {
-    expect(output.textContent).to.equal('Hello you!');
+    expect(outputQuery.textContent).to.equal('Hello you!');
   });
 
   it('greets the user by the name he has entered in one input event (using drag and drop for example)', () => {
-    input.simulate.input({ value: 'AmsterdamJS' });
-    expect(output.textContent).to.equal('Hello AmsterdamJS!');
+    inputQuery.simulate.input({ value: 'AmsterdamJS' });
+    expect(outputQuery.textContent).to.equal('Hello AmsterdamJS!');
   });
 
   it('outputs the value currently being typed', () => {
-    input.simulate.keyPress('J', '', 'J');
-    expect(output.textContent).to.equal('Hello J!');
-    input.simulate.keyPress('O', 'J', 'Jo');
-    expect(output.textContent).to.equal('Hello Jo!');
+    inputQuery.simulate.keyPress('J', '', 'J');
+    expect(outputQuery.textContent).to.equal('Hello J!');
+    inputQuery.simulate.keyPress('O', 'J', 'Jo');
+    expect(outputQuery.textContent).to.equal('Hello Jo!');
   });
 
 });

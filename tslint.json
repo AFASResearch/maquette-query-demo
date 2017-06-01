@@ -1,5 +1,8 @@
 {
   "extends": [
     "./node_modules/typescript-assistant/tslint.tsa.json"
-  ]
+  ],
+  "rules": {
+    "mocha-no-side-effect-code": [ true, { "ignore": "^createTestProjector\\(\\)$|^projector.query.*$|^xit\\(.*" } ]
+  }
 }

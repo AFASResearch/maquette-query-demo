@@ -10,16 +10,16 @@ export let createFilteredList = (context: MaterialMaquetteServicesBase, config: 
 
   let filterText = ''; // 'private' state
 
+  let matchesFilterText = (item: ListItem) => {
+    return !filterText || item.text.toLowerCase().indexOf(filterText) !== -1;
+  };
+
   let filterTextfield = createTextfield(context, {
     setValue: (text: string) => filterText = text.toLowerCase(),
     getValue: () => filterText,
     label: () => 'Filter',
     id: 'filter'
   });
-
-  let matchesFilterText = (item: ListItem) => {
-    return !filterText || item.text.toLowerCase().indexOf(filterText) !== -1;
-  };
 
   let list = createList(context, {
     getItems: () => config.getItems().filter(matchesFilterText),
