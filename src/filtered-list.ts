@@ -1,6 +1,6 @@
-import {createTextfield, createList, ListItem, MaterialMaquetteServicesBase} from "material-maquette";
-import {h} from "maquette";
-import {createAppearAnimation} from "./animations/appear";
+import { createTextfield, createList, ListItem, MaterialMaquetteServicesBase } from 'material-maquette';
+import { h } from 'maquette';
+import { createAppearAnimation } from './animations/appear';
 
 export interface FilteredListConfig {
   getItems(): ListItem[];

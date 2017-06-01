@@ -1,11 +1,11 @@
-import * as bezier from "bezier-easing";
+import * as bezier from 'bezier-easing';
 
 let standardCurve = bezier(0.4, 0.0, 0.2, 1);
 let decelerationCurve = bezier(0.0, 0.0, 0.2, 1);
 let accellerationCurve = bezier(0.4, 0.0, 1, 1);
 let sharpCurve = bezier(0.4, 0.0, 0.6, 1);
 
-export let createAppearAnimation = (dependencies: {window: Window}, duration = 300) => {
+export let createAppearAnimation = (dependencies: { window: Window }, duration = 300) => {
 
   return (element: HTMLElement) => {
     let autoHeight = element.offsetHeight;
@@ -44,5 +44,5 @@ export let createAppearAnimation = (dependencies: {window: Window}, duration = 3
     element.classList.add('animating');
 
     requestAnimationFrame(step);
-  }
+  };
 };

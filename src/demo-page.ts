@@ -1,7 +1,7 @@
-import {h} from "maquette";
-import {createToolbar, MaterialMaquetteServicesBase, ListItem, Page} from "material-maquette";
-import {createFilteredList} from "./filtered-list";
-import * as faker from "faker";
+import { h } from 'maquette';
+import { createToolbar, MaterialMaquetteServicesBase, ListItem, Page } from 'material-maquette';
+import { createFilteredList } from './filtered-list';
+import * as faker from 'faker';
 
 export let createDemoPage = (context: MaterialMaquetteServicesBase) => {
 
@@ -10,7 +10,7 @@ export let createDemoPage = (context: MaterialMaquetteServicesBase) => {
     key: lastKey++,
     startIcon: 'person',
     text: faker.name.firstName() + ' ' + faker.name.lastName()
-    //faker.system.commonFileName(faker.system.commonFileExt(), faker.system.commonFileType())
+    // faker.system.commonFileName(faker.system.commonFileExt(), faker.system.commonFileType())
   });
 
   let items: ListItem[] = [];

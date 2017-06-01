@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack-dev-server"
+    "serve": "webpack-dev-server",
+    "assist": "tsa"
   },
   "author": "",
   "license": "MIT",
@@ -22,7 +23,7 @@
     "maquette": "2.5.0",
     "maquette-query": "0.11.2",
     "material-components-web": "0.11.1",
-    "mocha": "3.4.2",
+    "mocha": "^3.4.2",
     "ts-node": "3.0.4",
     "tslint": "5.2.0",
     "typescript": "2.3.2",
@@ -30,5 +31,9 @@
     "typescript-formatter": "5.2.0",
     "webpack": "2.5.1",
     "webpack-dev-server": "2.4.5"
+  },
+  "dependencies": {
+    "cross-env": "^5.0.0",
+    "nyc": "^11.0.1"
   }
 }

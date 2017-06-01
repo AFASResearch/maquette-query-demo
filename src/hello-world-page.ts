@@ -1,5 +1,5 @@
 import { Page } from 'material-maquette';
-import {h} from "maquette";
+import { h } from 'maquette';
 
 export let createHelloWorldPage = (dependencies: {}): Page => {
 

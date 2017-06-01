@@ -10,7 +10,7 @@ declare module 'material-components-web' {
 
   export let list: {
     MDCList: any;
-  }
+  };
 }
 
 declare module '@material/list' {
