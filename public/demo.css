@@ -30,3 +30,7 @@ html, body {
 .bordered-list .mdc-list-item:not(:first-child) {
     /*border-top: none;*/
 }
+
+.filtered-list {
+  padding-left: 0;
+}

@@ -1,6 +1,7 @@
 import { createTextfield, createList, ListItem, MaterialMaquetteServicesBase } from 'material-maquette';
 import { h } from 'maquette';
-import { createAppearAnimation } from './animations/appear';
+import { createStaggerAppearAnimation } from './animations/appear';
+import { createDisppearAnimation } from './animations/disappear';
 
 export interface FilteredListConfig {
   getItems(): ListItem[];
@@ -23,8 +24,9 @@ export let createFilteredList = (context: MaterialMaquetteServicesBase, config: 
 
   let list = createList(context, {
     getItems: () => config.getItems().filter(matchesFilterText),
-    extraClasses: ['bordered-list'],
-    itemEnterAnimation: createAppearAnimation(context)
+    extraClasses: ['filtered-list'],
+    itemEnterAnimation: createStaggerAppearAnimation(context),
+    itemExitAnimation: createDisppearAnimation(context)
   });
 
   return {
