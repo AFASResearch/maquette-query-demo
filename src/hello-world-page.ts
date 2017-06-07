@@ -27,9 +27,7 @@ export let createHelloWorldPage = (dependencies: {}): Page => {
 
   return {
     exit: () => undefined,
-    renderPlaceholders: {
-      title: () => h('div', ['Hello world']),
-      content: renderMaquette
-    }
+    title: () => 'Hello world',
+    content: renderMaquette
   };
 };

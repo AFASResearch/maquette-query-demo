@@ -1,6 +1,6 @@
-import { h } from 'maquette';
-import { createToolbar, MaterialMaquetteServicesBase, ListItem, Page } from 'material-maquette';
-import { createFilteredList } from './filtered-list';
+import {h} from 'maquette';
+import {ListItem, MaterialMaquetteServicesBase, Page} from 'material-maquette';
+import {createFilteredList} from './filtered-list';
 import * as faker from 'faker';
 
 export let createDemoPage = (context: MaterialMaquetteServicesBase) => {
@@ -28,12 +28,10 @@ export let createDemoPage = (context: MaterialMaquetteServicesBase) => {
   });
 
   let page: Page = {
-    renderPlaceholders: {
-      title: () => h('div', ['List of attendees']),
-      content: () => h('div.main', [
-        filteredList.renderMaquette()
-      ])
-    },
+    title: () => 'List of attendees',
+    content: () => h('div.main', [
+      filteredList.renderMaquette()
+    ]),
     exit: () => undefined
   };
 

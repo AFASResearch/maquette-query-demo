@@ -23,6 +23,7 @@
     "maquette": "2.5.0",
     "maquette-query": "0.11.2",
     "material-components-web": "0.12.1",
+    "material-maquette": "0.0.3",
     "mocha": "^3.4.2",
     "ts-node": "3.0.4",
     "tslint": "5.2.0",

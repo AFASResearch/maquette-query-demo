@@ -12,7 +12,7 @@ describe('hello-world-page', () => {
 
   beforeEach(() => {
     page = createHelloWorldPage({});
-    projector.initialize(page.renderPlaceholders['content']);
+    projector.initialize(page.content);
   });
 
   it('outputs "hello you!" when no name has been entered', () => {

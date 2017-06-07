@@ -18,14 +18,11 @@ let router = createRouter(services, {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+  // let toolbarComponent = toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
+  // toolbarComponent.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
 
-  let toolbarComponent = toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
-  toolbarComponent.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
-
-  let placholderElements = document.querySelectorAll('[id^="placeholder-"]') as Object as HTMLElement[];
-  let placeholders: { [placeholderId: string]: HTMLElement } = {};
-  for (let element of placholderElements) {
-    placeholders[element.id.substr(12)] = element;
-  }
-  router.start(placeholders);
+  router.start({
+    titleElement: document.querySelector('#placeholder-title')!,
+    contentElement: document.querySelector('#placeholder-content')!
+  });
 });
